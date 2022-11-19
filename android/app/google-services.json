@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "287772576695",
+    "project_id": "thebookmark-1f190",
+    "storage_bucket": "thebookmark-1f190.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287772576695:android:dad92285ce06510e43f632",
+        "android_client_info": {
+          "package_name": "com.example.thebookmark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "287772576695-mvtlm8a0sckuq7j4p7n88651ub2e9633.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thebookmark",
+            "certificate_hash": "a2e69220dc2f6f38c33801978943628cfac5e651"
+          }
+        },
+        {
+          "client_id": "287772576695-54rttrjfh5i5gdfl0juf0qrklgamp4nn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFLmSvpETB8-3B8t-CBE2UaDTlhphNF0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "287772576695-54rttrjfh5i5gdfl0juf0qrklgamp4nn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

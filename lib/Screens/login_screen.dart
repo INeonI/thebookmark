@@ -4,7 +4,7 @@ import '../widgets/auth_ui.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
-
+  static const String id='login-screem';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

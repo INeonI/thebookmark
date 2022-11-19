@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:thebookmark/Screens/authentication/phoneauth_screen.dart';
 
 class AuthUi extends StatelessWidget {
   const AuthUi({Key? key}) : super(key: key);
@@ -16,7 +17,10 @@ class AuthUi extends StatelessWidget {
             child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.white)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, PhoneAuthScreen.id);
+
+                },
                 child: Row(
                   children: [
                     Icon(
