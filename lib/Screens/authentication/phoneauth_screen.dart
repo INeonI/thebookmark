@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:legacy_progress_dialog/legacy_progress_dialog.dart';
+import 'package:thebookmark/services/phoneauth_service.dart';
+
 
 class PhoneAuthScreen extends StatefulWidget {
   const PhoneAuthScreen({Key? key}) : super(key: key);
@@ -7,7 +10,10 @@ class PhoneAuthScreen extends StatefulWidget {
 
   @override
   State<PhoneAuthScreen> createState() => _PhoneAuthScreenState();
+
+
 }
+
 
 class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
   bool validate = false;
@@ -15,35 +21,26 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
   var countryCoderController = TextEditingController(text: '+962');
   var phoneNumberController = TextEditingController();
 
-  showAlertDialog(BuildContext context) {
-    AlertDialog alert = AlertDialog(
-      content: Row(
-        children: [
-          CircularProgressIndicator(
-            valueColor:
-                AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
-          ),
-          SizedBox(
-            width: 8,
-          ),
-          Text('Please wait')
-        ],
-      ),
-    );
-    showDialog(
-      barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return alert;
-        });
-  }
 
-  phoneAuthentication(number) {
-    print(number);
-  }
+
+  PhoneAuthService _service = PhoneAuthService();
+
+
 
   @override
   Widget build(BuildContext context) {
+
+
+    ProgressDialog progressDialog = ProgressDialog(
+      context: context,
+      backgroundColor: Colors.white,
+      textColor: Colors.black,
+      loadingText: 'Please wait',
+      progressIndicatorColor: Theme.of(context).primaryColor,
+    );
+
+
+
     return Scaffold(
       appBar: AppBar(
         elevation: 1,
@@ -105,19 +102,19 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                   flex: 3,
                   child: TextFormField(
                     onChanged: (value) {
-                      if (value.length == 10) {
+                      if (value.length == 9) {
                         setState(() {
                           validate = true;
                         });
                       }
-                      if (value.length < 10) {
+                      if (value.length < 9) {
                         setState(() {
                           validate = false;
                         });
                       }
                     },
                     autofocus: true,
-                    maxLength: 10,
+                    maxLength: 9,
                     keyboardType: TextInputType.phone,
                     controller: phoneNumberController,
                     decoration: InputDecoration(
@@ -145,8 +142,10 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
               onPressed: () {
                 String number =
                     '${countryCoderController.text}${phoneNumberController.text}';
-                showAlertDialog(context);
-                phoneAuthentication(number);
+
+                progressDialog.show();
+                _service.verifyPhoneNumber(context, number);
+
               },
               child: Padding(
                 padding: const EdgeInsets.all(12.0),

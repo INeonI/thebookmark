@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thebookmark/Screens/authentication/phoneauth_screen.dart';
+import 'package:thebookmark/Screens/location_screen.dart';
 import 'package:thebookmark/Screens/login_screen.dart';
 import 'package:thebookmark/Screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
           routes: {
             LoginScreen.id: (context) => const LoginScreen(),
             PhoneAuthScreen.id: (context) => const PhoneAuthScreen(),
+            LocationScreen.id: (context) => const LocationScreen(),
           },
         ); // MaterialApp
         }

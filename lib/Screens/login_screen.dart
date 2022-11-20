@@ -1,12 +1,27 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:thebookmark/Screens/location_screen.dart';
 
 import '../widgets/auth_ui.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
-  static const String id='login-screem';
+  static const String id='login-screen';
   @override
   Widget build(BuildContext context) {
+
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        //if already logged in it won't ask again
+        Navigator.pushReplacementNamed(context, LocationScreen.id);
+      }
+    });
+
+
     return Scaffold(
         backgroundColor: Colors.cyan.shade900,
         body: Column(
